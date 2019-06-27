@@ -9,7 +9,7 @@
 </style>
 <template>
   <v-app>
-    <v-toolbar fixed app clipped-right dark color="primary">
+    <v-toolbar fixed app clipped-right dark :color="topTheme">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Toolbar</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -59,8 +59,8 @@
         </v-card>
       </v-menu>
     </v-toolbar>
-    <v-navigation-drawer v-model="drawer" fixed app dark>
-      <v-toolbar flat color="primary">
+    <v-navigation-drawer v-model="drawer" fixed app>
+      <v-toolbar flat :color="topTheme" dark>
         <v-list>
           <v-list-tile>
             <v-list-tile-title class="title">
@@ -70,14 +70,50 @@
         </v-list>
       </v-toolbar>
       <v-list>
-        <v-list-tile v-for="navitem in navlinks" :key="navitem.name" :to="navitem.to" active-class="activenav" ripple>
-          <v-list-tile-action>
-            <v-icon>{{ navitem.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ navitem.name }}</v-list-tile-title>
-          </v-list-tile-content>
+      	<v-list-tile to="/panel/home" ripple>
+        	<v-list-tile-action>
+            	<v-icon>home</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	Home
+            </v-list-tile-content>
         </v-list-tile>
+      	<v-list-tile to="/panel/about"  v-if="false==true" ripple>
+        	<v-list-tile-action>
+            	<v-icon>info</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	About
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-list-group prepend-icon="face" lazy>
+            <template v-slot:activator>
+				<v-list-tile>
+                    <v-list-tile-title> Users </v-list-tile-title>
+                </v-list-tile>
+            </template>
+            <v-list-tile to="/panel/about" ripple>
+            	<v-list-tile-action>
+                	<v-icon>arrow_forward</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    About
+                </v-list-tile-content>
+        	</v-list-tile>
+            <v-list-group no-action sub-group v-if="false==true">
+            	<template v-slot:activator>
+					<v-list-tile>
+                    	<v-list-tile-title>Test</v-list-tile-title>
+                   	</v-list-tile>
+            	</template>
+            	<v-list-tile>
+                	<v-list-tile-title>Home</v-list-tile-title>
+                	<v-list-tile-action>
+                    	<v-icon>home</v-icon>
+                	</v-list-tile-action>
+                </v-list-tile>
+            </v-list-group>
+         </v-list-group>
       </v-list>
     </v-navigation-drawer>
     <v-content>
@@ -93,6 +129,7 @@
 <script>
 export default {
   data: () => ({
+  	topTheme: "primary",
     drawer: null,
     topMenu: false,
     fav: true,

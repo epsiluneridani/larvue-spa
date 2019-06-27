@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+import Guards from '@/js/guards';
 
-import Home from '@/js/views/Home'
-import About from '@/js/views/About'
-import Err404 from '@/js/views/Error404'
+const Home = () => import('@/js/views/Home');
+const About = () => import('@/js/views/About');
+const Err404 = () => import('@/js/views/Error404');
 
 Vue.use(VueRouter);
 
@@ -22,7 +25,8 @@ const router = new VueRouter({
         {
             path: '/panel/about',
             name: 'about',
-            component: About
+            component: About,
+        	beforeEnter: Guards
         },
     	{
         	path: '/panel/*',
@@ -30,6 +34,15 @@ const router = new VueRouter({
         	component: Err404
     	}
     ]
+});
+
+router.beforeEach((to, from, next) => {
+  NProgress.start();
+  next();
+});
+
+router.afterEach((to, from) => {
+  NProgress.done();
 });
 
 export default router;

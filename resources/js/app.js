@@ -9,17 +9,19 @@ require('./bootstrap');
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 //import 'vuetify/dist/vuetify.min.css'
-import Routes from '@/js/routes.js'
+import { store } from "./store";
+import router from '@/js/routes.js'
 import App from '@/js/views/App'
+
+// const passportClients = () => import('./components/passport/Clients.vue');
+// const passportAuthorizedClients = () => import('./components/passport/AuthorizedClients.vue');
+// const passportPersonalAccessToken = () => import('./components/passport/PersonalAccessTokens.vue');
 
 Vue.use(Vuetify)
 
-
-//window.Vue = require('vue');
-
-
-
-
+// Vue.component( 'passport-clients', passportClients );
+// Vue.component( 'passport-authorized-clients', passportAuthorizedClients );
+// Vue.component( 'passport-personal-access-token', passportPersonalAccessToken );
 
 Vue.component(
     'passport-clients',
@@ -57,6 +59,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    router: Routes,
+    router,
+	store,
     render: h => h(App)
 });
