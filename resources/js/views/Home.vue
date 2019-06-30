@@ -1,8 +1,13 @@
 <template>
-    <div>
-    	<h1>Home Page</h1>
-    	<passport-clients/>
-		<passport-authorized-clients/>
-		<passport-personal-access-tokens/>
-	</div>
+	<v-container>
+        <div class="mt-2">
+        	<passport-clients/>
+		</div>
+    	<div class="mt-2">
+        	<passport-authorized-clients/>
+		</div>
+    	<div class="mt-2">
+        	<passport-personal-access-tokens/>
+		</div>
+    </v-container>
 </template>
