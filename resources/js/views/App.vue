@@ -30,33 +30,7 @@
             </v-flex>
           </v-btn>
         </template>
-        <v-card>
-          <v-list>
-            <v-list-tile avatar>
-              <v-list-tile-avatar>
-                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
-              </v-list-tile-avatar>
-
-              <v-list-tile-content>
-                <v-list-tile-title>John Leider</v-list-tile-title>
-                <v-list-tile-sub-title>Founder of Vuetify.js</v-list-tile-sub-title>
-              </v-list-tile-content>
-
-            </v-list-tile>
-          </v-list>
-
-          <v-divider></v-divider>
-
-          <v-list dense>
-            <v-list-tile to="/panel/account">
-              <v-list-tile-title>Account Preferences</v-list-tile-title>
-            </v-list-tile>
-
-            <v-list-tile to="/panel/logout">
-              <v-list-tile-title>Logout</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-card>
+        <user-menu/>
       </v-menu>
     </v-toolbar>
     <v-navigation-drawer v-model="drawer" fixed app>
@@ -64,40 +38,151 @@
         <v-list>
           <v-list-tile>
             <v-list-tile-title class="title">
-              Application
+            	Lar<span class="font-weight-thin">Vue</span>
             </v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-toolbar>
       <v-list>
+      	<v-subheader>General</v-subheader>
       	<v-list-tile to="/panel/home" ripple>
         	<v-list-tile-action>
-            	<v-icon>home</v-icon>
+            	<v-icon>dashboard</v-icon>
             </v-list-tile-action>
         	<v-list-tile-content>
-            	Home
+            	Dashboard
             </v-list-tile-content>
         </v-list-tile>
-      	<v-list-tile to="/panel/about"  v-if="false==true" ripple>
+      	<v-list-tile ripple>
+        	<v-list-tile-action>
+            	<v-icon>receipt</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	Reports
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-divider/>
+      	<v-subheader>Administration</v-subheader>
+      	<v-list-tile ripple>
+        	<v-list-tile-action>
+            	<v-icon>wb_cloudy</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	Servers
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-list-tile ripple>
+        	<v-list-tile-action>
+            	<v-icon>bubble_chart</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	Services
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-divider/>
+      	<v-subheader>Account Manager</v-subheader>
+      	<v-list-tile ripple>
+        	<v-list-tile-action>
+            	<v-icon>group</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	Clients
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-list-tile ripple>
+        	<v-list-tile-action>
+            	<v-icon>description</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	Package
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-divider/>
+      	<v-subheader>System</v-subheader>
+      	<v-list-tile ripple>
+        	<v-list-tile-action>
+            	<v-icon>face</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	Users
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-list-tile ripple>
+        	<v-list-tile-action>
+            	<v-icon>verified_user</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	Roles
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-list-tile ripple>
+        	<v-list-tile-action>
+            	<v-icon>domain</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	OAuth
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-list-tile ripple>
+        	<v-list-tile-action>
+            	<v-icon>build</v-icon>
+            </v-list-tile-action>
+        	<v-list-tile-content>
+            	Configuration
+            </v-list-tile-content>
+        </v-list-tile>
+      	<v-list-tile ripple>
         	<v-list-tile-action>
             	<v-icon>info</v-icon>
             </v-list-tile-action>
         	<v-list-tile-content>
-            	About
+            	System Information
             </v-list-tile-content>
         </v-list-tile>
-      	<v-list-group prepend-icon="face" lazy>
+      	<v-list-group prepend-icon="face" v-if="1!=1" lazy>
             <template v-slot:activator>
 				<v-list-tile>
                     <v-list-tile-title> Users </v-list-tile-title>
                 </v-list-tile>
             </template>
-            <v-list-tile to="/panel/about" ripple>
+        	<v-list-tile ripple>
             	<v-list-tile-action>
                 	<v-icon>arrow_forward</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    About
+                    List Users
+                </v-list-tile-content>
+        	</v-list-tile>
+            <v-list-tile ripple>
+            	<v-list-tile-action>
+                	<v-icon>arrow_forward</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    Add User
+                </v-list-tile-content>
+        	</v-list-tile>
+        	<v-list-tile ripple>
+            	<v-list-tile-action>
+                	<v-icon>arrow_forward</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    Edit User
+                </v-list-tile-content>
+        	</v-list-tile>
+        	<v-list-tile ripple>
+            	<v-list-tile-action>
+                	<v-icon>arrow_forward</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    Remove User
+                </v-list-tile-content>
+        	</v-list-tile>
+        	<v-list-tile ripple>
+            	<v-list-tile-action>
+                	<v-icon>arrow_forward</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    Update Role
                 </v-list-tile-content>
         	</v-list-tile>
             <v-list-group no-action sub-group v-if="false==true">
@@ -117,16 +202,18 @@
       </v-list>
     </v-navigation-drawer>
     <v-content>
-      <v-container>
-        <v-fade-transition mode="out-in">
-          <router-view></router-view>
-        </v-fade-transition>
-      </v-container>
+      <v-fade-transition mode="out-in">
+        <router-view></router-view>
+      </v-fade-transition>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import Vue from 'vue'
+const UserMenu = () => import('@/js/components/UserMenu');
+Vue.component('user-menu', UserMenu );
+
 export default {
   data: () => ({
   	topTheme: "primary",
@@ -150,6 +237,9 @@ export default {
   }),
   props: {
     source: String
+  },
+  mounted(){
+  	
   }
 }
 </script>

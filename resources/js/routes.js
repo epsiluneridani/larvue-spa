@@ -7,6 +7,7 @@ import Guards from '@/js/guards';
 const Home = () => import('@/js/views/Home');
 const About = () => import('@/js/views/About');
 const Err404 = () => import('@/js/views/Error404');
+const Login = () => import('@/js/views/auth/Login');
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,11 @@ const router = new VueRouter({
             component: About,
         	beforeEnter: Guards
         },
+    	{
+        	path: '/panel/login',
+        	name: 'login',
+        	component: Login
+    	},
     	{
         	path: '/panel/*',
         	name: 'err404',
